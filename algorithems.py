@@ -21,7 +21,7 @@ def BFS(root: puzzle_state):
                 state_son[0].parent = val
                 state_son[0].moveFromParent = state_son[1]
                 q.append(state_son[0])
-    print(val.toString())
+    
     # val is the goal, now let's get the path
     path = []
     while val.parent != 'root':
@@ -37,4 +37,29 @@ def IDAStar(root: puzzle_state):
     pass
 
 def DFS(root: puzzle_state):
-    pass
+    
+    def dive(node: puzzle_state, seen: list):
+        seen.append(node.id)
+        if node.isGoal():
+            return node
+        for state_son in node.get_possible_moves():
+            if not (state_son[0].id in seen):
+                state_son[0].parent = node
+                state_son[0].moveFromParent = state_son[1]
+                dive(state_son[0], seen)
+
+    root.parent = 'root'
+    seen = []
+    try:
+        val = dive(root, seen)    
+    except:
+        print(f'too hard... scanned {len(seen)} diffrent states without success')
+        return ['failed']
+    # val is the goal, now let's get the path
+    path = []
+    while val.parent != 'root':
+        path.append(val.moveFromParent)
+        val = val.parent
+    path.reverse()
+    return path
+    

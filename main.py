@@ -30,7 +30,7 @@ def main():
     print(f"Given state of the board:\n{root.toString()}")
     
     # Apply chosen algorithem:
-    path = [] # list of moves
+    path = ['empty'] # list of moves
     if algorithem == 'IDS':
         path = IDS(root)
     
