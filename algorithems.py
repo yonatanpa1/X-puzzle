@@ -46,7 +46,9 @@ def DFS(root: puzzle_state):
             if not (state_son[0].id in seen):
                 state_son[0].parent = node
                 state_son[0].moveFromParent = state_son[1]
-                dive(state_son[0], seen)
+                val = dive(state_son[0], seen)
+                if val:
+                    return val
 
     root.parent = 'root'
     seen = []
