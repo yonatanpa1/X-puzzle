@@ -34,7 +34,7 @@ def main():
     if algorithem == 'IDS':
         path = IDS(root)
     
-    if algorithem == 'BPS':
+    if algorithem == 'BFS':
         path = BFS(root)
 
     if algorithem == 'A-STAR':

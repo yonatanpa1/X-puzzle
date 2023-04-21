@@ -4,6 +4,7 @@ class puzzle_state:
     def __init__(self, data: list) -> None:
         self.current_state = tuple(data)
         self.n = int(math.sqrt(len(self.current_state))) # n in NxN board
+        self.id = "".join([str(x) for x in data])
         
         # generate goal state:
         temp = []
@@ -11,6 +12,11 @@ class puzzle_state:
             temp.append(i + 1)
         temp[-1] = 0
         self.goal_state = tuple(temp)        
+
+        # for path tracking:
+        self.parent = None
+        self.moveFromParent = None
+
         
     def isGoal(self) -> bool:
         return self.current_state == self.goal_state
