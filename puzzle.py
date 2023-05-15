@@ -5,7 +5,7 @@ class puzzle_state:
         self.current_state = tuple(data)
         self.n = int(math.sqrt(len(self.current_state))) # n in NxN board
         self.id = "".join([str(x) for x in data])
-        
+        self.f=float('inf')
         # generate goal state:
         temp = []
         for i in range(len(self.current_state)):
@@ -84,3 +84,6 @@ class puzzle_state:
                 i += 1
             s += '\n'
         return s
+
+    def __lt__(self, other):
+        return self.f < other.f

@@ -39,15 +39,15 @@ def main():
 
     if algorithem == 'A-STAR':
         path = AStar(root)
-
-    if algorithem == 'IDA-STAR':
-        path = IDAStar(root)
     
     if algorithem == 'DFS':
         path = DFS(root)
-
-    save_to_output(path)
-    print(f'Done. Results will be showed in {OUTPUT_FILE_LOCATION}')
+    if path == None:
+        save_to_output("it did not succeed") 
+        print('Done. it did not succeed')
+    else:
+        save_to_output(path)
+        print(f'Done. Results will be showed in {OUTPUT_FILE_LOCATION}')
 
 if __name__ == "__main__":
     main()
