@@ -105,7 +105,7 @@ def AStar(root: puzzle_state):
     open_list.put((root.f,root))  
     
     while not open_list.empty():
-        # get the node with the lowest priority in the open list-priority Queue
+        #get the node with the lowest priority in the open list-priority Queue
         current=open_list.get()[1]
         
         if current.isGoal():
@@ -124,23 +124,26 @@ def AStar(root: puzzle_state):
             if child.id in closed_list:
                 #child is in closed list so continue
                 continue
-            
             #calculate f and h function for the child
-            h = manhattan_dis(child.current_state, child.goal_state)
-            f = current.g+h
-            
-            if f>=child.f:
-                #child is in open list with lower f so continue
-                continue
-                
-            child.g=current.g 
-            child.h=h
-            child.f=f
-            child.parent=current
-            child.moveFromParent=move
-            
-            #add child to open list with priority f
-            open_list.put((f,child))
+            h=manhattan_dis(child.current_state, child.goal_state)
+            g=current.g+1  
+            f=g+h
+
+            if child.f==float('inf') or f<child.f:
+                tmp_f=child.f
+                child.g=g+1
+                child.h=h
+                child.f=f
+                child.parent=current
+                child.moveFromParent=move
+                if child.id not in open_list.queue:
+                    # add child to open list with priority f
+                    open_list.put((f, child))
+                else:
+                    open_list.queue.remove((tmp_f, child))
+                    open_list.put((f, child))
+                   
+                    
     #no path found so return None           
     return None  
 
