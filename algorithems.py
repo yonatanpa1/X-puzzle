@@ -1,6 +1,12 @@
 from puzzle import *
 from queue import LifoQueue, PriorityQueue
 
+"""
+326117561 יהונתן פאשה
+325427649 אביב קינן
+325515401 שיר שווקה 
+325427946 איתמר עצמוני 
+"""
 
 #IDS algorithm implementation using DFS_
 def IDS(root: puzzle_state,max_depth = 1000):
@@ -86,14 +92,17 @@ def BFS(root: puzzle_state):
                 state_son[0].parent = val
                 state_son[0].moveFromParent = state_son[1]
                 q.append(state_son[0])
-    
-    # val is the goal, now let's get the path
     path = []
-    while val.parent is not None:
-        path.append(val.moveFromParent)
-        val = val.parent
-    path.reverse()
-    return path
+    if val.isGoal():
+        print(val.toString())
+    # val is the goal, now let's get the path
+        while val.parent is not None:
+            path.append(val.moveFromParent)
+            val = val.parent
+        path.reverse()
+        return path
+    else:
+        return None
 
 
 

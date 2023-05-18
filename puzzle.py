@@ -1,5 +1,12 @@
 import math
 
+"""
+326117561 יהונתן פאשה
+325427649 אביב קינן
+325515401 שיר שווקה 
+325427946 איתמר עצמוני 
+"""
+
 class puzzle_state:
     def __init__(self, data: list) -> None:
         self.current_state = tuple(data)

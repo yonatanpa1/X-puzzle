@@ -1,6 +1,13 @@
 from puzzle import *
 from algorithems import *
 
+"""
+326117561 יהונתן פאשה
+325427649 אביב קינן
+325515401 שיר שווקה 
+325427946 איתמר עצמוני 
+"""
+
 INPUT_FILE_LOCATION = "input.txt"
 OUTPUT_FILE_LOCATION = "output.txt"
 
