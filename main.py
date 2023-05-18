@@ -42,7 +42,12 @@ def main():
     
     if algorithem == 'DFS':
         path = DFS(root)
-    if path == None:
+        
+    if algorithem == 'IDA-STAR':
+        save_to_output("we did not implement the IDA-STAR algorithm") 
+        print('Done. we did not implement the IDA-STAR algorithm')
+        
+    if path == None or path==['failed']:
         save_to_output("it did not succeed") 
         print('Done. it did not succeed')
     else:
